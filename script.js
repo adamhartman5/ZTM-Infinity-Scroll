@@ -6,7 +6,7 @@ let photosArray = [];
 // Unsplash API
 const count = 10;
 const apiKey = '8ew49ZBwkpuGfF6cIiiQfhE6Y2THJIbbjgUPz5fEWuU';
-const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
+const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 //Create Elements for Links & Photos, Add to DOM
 function displayPhotos() {
@@ -18,7 +18,7 @@ function displayPhotos() {
         item.setAttribute('target', '_blank');
         // Create <img> for photo
         const img = document.createElement('img');
-        img.setAttribute('src', photo.url.regular);
+        img.setAttribute('src', photo.urls.regular);
         img.setAttribute('alt', photo.alt_description);
         img.setAttribute('title', photo.alt_description);
         // Put <img> inside <a>, then put both inside imageContainer element
@@ -30,9 +30,9 @@ function displayPhotos() {
 // Get photos from Unsplash API
 async function getPhotos() {
     try {
-        const response = await fetch(apiURL);
+        const response = await fetch(apiUrl);
         photosArray = await response.json();
-        console.log(photosArray);
+        console.log(photosArray)
         displayPhotos();
     } catch (error) {
         // Catch error here
